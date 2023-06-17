@@ -23,7 +23,7 @@ import styled from "styled-components";
 
 export const Button = styled.button`
   padding: 10px;
-  border-radius: 7px;
+  border-radius: 10px;
   border: none;
   background-color: #EDEDEF;
   padding: 10px;
@@ -34,7 +34,6 @@ export const Button = styled.button`
   cursor: pointer;
   }
 `;
-
 
 const ButtonGroup = styled.div`
   display: flex;
@@ -245,7 +244,7 @@ function isListEmpty() {
         </>
       )}
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
-          <h2>Your Staked TRASH BIRDS</h2>
+          <h2>Your Staked DOSAMIGOS</h2>
           <div className={styles.nftBoxGrid}>
             {stakedTokens &&
               stakedTokens[0]?.map((stakedToken: BigNumber) => (
