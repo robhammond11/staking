@@ -31,7 +31,7 @@ export const Button = styled.button`
   font-family: 'Perfect DOS VGA 437', sans-serif';
   color: black;
   width: auto;
-  cursor: pointer;
+  cursor:pointer;
   }
 `;
 
@@ -77,7 +77,6 @@ const Stake: NextPage = () => {
   const [claimableRewards, setClaimableRewards] = useState<BigNumber>();
   const [selected, setSelected] = useState<any[]>([]);  
   const [ownedNft, setOwnedNft] = useState<any[]>([]);
-   
   const { contract, isLoading } = useContract(stakingContractAddress);
   const { data: ownedNfts } = useOwnedNFTs(nftDropContract, address);
   const { data: tokenBalance } = useTokenBalance(tokenContract, address);
@@ -205,14 +204,10 @@ function isListEmpty() {
           >
             Stake Selected
 
-           
-        
           </Web3Button>
-    
 
           <Spacer />
           <Button
-    
             onClick={() => clear()}
           >
             Clear Selected
