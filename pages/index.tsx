@@ -21,7 +21,7 @@ import {
 import styles from "../styles/Home.module.css";
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const Buttons = styled.button`
   padding: 10px;
   border-radius: 10px;
   border: none;
@@ -51,7 +51,6 @@ const SpacerLarge = styled.div`
   
 `  
 const { Alchemy, Network,  NftExcludeFilters } = require("alchemy-sdk");
-
 // Configures the Alchemy SDK
 const config = {
     apiKey: "nLeTw4kEJZvFG5VNZY1TmgVXeI6cTdBM", // Replace with your API key
@@ -59,7 +58,6 @@ const config = {
 };
 
 // Creates an Alchemy object instance with the config to use for making requests
-
 const Stake: NextPage = () => {
  
   const alchemy = new Alchemy(config);
@@ -107,8 +105,6 @@ return
 function isListEmpty() {
   if (selected.length === 0) return true;
 }
-
-
   useEffect(() => {
     if (!contract || !address) return;
     async function loadClaimableRewards() {
@@ -130,7 +126,6 @@ function isListEmpty() {
 
 }, [address, contract]);
 
-
   async function stakeNft()   {
     var tokenIds = selected.map(Number)
     if (!address) return;
@@ -148,16 +143,12 @@ function isListEmpty() {
     await contract?.call("stake", [tokenList]);
   }
 
-
-  
   if (isLoading) {
     return <div>Loading</div>;
   }
   const edited = true
 
   return (
-    
-    
     <div className={styles.container}>
       <h1 className={styles.h1}>DOSAMIGOS STAKING</h1>
       <hr className={`${styles.divider} ${styles.spacerTop}`} />
@@ -207,11 +198,11 @@ function isListEmpty() {
           </Web3Button>
 
           <Spacer />
-          <Button
+          <Buttons
             onClick={() => clear()}
           >
             Clear Selected
-          </Button>
+          </Buttons>
           <Spacer />
      
           </ButtonGroup>
@@ -226,11 +217,11 @@ function isListEmpty() {
                 />
                 <h3>{nft.metadata.name}</h3>
                 
-                <Button
+                <Buttons
                 onClick={() => activeClick(nft.metadata.id)}
                 >
                 {selected.includes(nft.metadata.id) ? 'Unselect' : 'Select'}
-                </Button>
+                </Buttons>
                 
               </div>
 
