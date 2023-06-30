@@ -10,6 +10,11 @@ import {
   stakingContractAddress,
 } from "../consts/contractAddresses";
 import styles from "../styles/Home.module.css";
+import styled from "styled-components";
+
+const SpacerLarge = styled.div`
+   width:10px;
+  height:10px;  `
 
 interface NFTCardProps {
   tokenId: number;
@@ -36,7 +41,10 @@ const NFTCard: FC<NFTCardProps> = ({ tokenId }) => {
           >
             Withdraw
           </Web3Button>
+         
         </div>
+        
+        
       )}
     </>
   );

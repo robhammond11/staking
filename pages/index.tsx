@@ -20,6 +20,7 @@ import {
 } from "../consts/contractAddresses";
 import styles from "../styles/Home.module.css";
 import styled from "styled-components";
+const { Alchemy, Network,  NftExcludeFilters } = require("alchemy-sdk");
 
 export const Buttons = styled.button`
   padding: 10px;
@@ -50,17 +51,12 @@ const SpacerLarge = styled.div`
   height:10px;
   
 `  
-const { Alchemy, Network,  NftExcludeFilters } = require("alchemy-sdk");
-// Configures the Alchemy SDK
-const config = {
-    apiKey: "nLeTw4kEJZvFG5VNZY1TmgVXeI6cTdBM", // Replace with your API key
-    network: Network.ETH_MAINNET, // Replace with your network
-};
 
-// Creates an Alchemy object instance with the config to use for making requests
+// Configures the Alchemy SDK
+
 const Stake: NextPage = () => {
  
-  const alchemy = new Alchemy(config);
+
   const address = useAddress();
   const { contract: nftDropContract } = useContract(
     nftDropContractAddress,
@@ -114,18 +110,6 @@ function isListEmpty() {
     loadClaimableRewards();
   }, [address, contract]);
 
-  useEffect(() => {
-    if (!contract || !address) return;
-      async function pullNftInfo() {
-      const options = {method: 'GET', headers: {accept: 'application/json'}}; 
-      let response = await fetch(`https://eth-mainnet.g.alchemy.com/nft/v2/nLeTw4kEJZvFG5VNZY1TmgVXeI6cTdBM/getNFTs?owner=${address}&contractAddresses[]=${nftDropContractAddress}&withMetadata=true`, options)
-      .then(response => response.json())
-      .then(response => setOwnedNft(response.ownedNfts));
-      }
-      pullNftInfo();
-
-}, [address, contract]);
-
   async function stakeNft()   {
     var tokenIds = selected.map(Number)
     if (!address) return;
@@ -143,9 +127,9 @@ function isListEmpty() {
     await contract?.call("stake", [tokenList]);
   }
 
-  if (isLoading) {
+  /*if (isLoading) {
     return <div>Loading</div>;
-  }
+  }*/
   const edited = true
 
   return (
@@ -239,9 +223,13 @@ function isListEmpty() {
                   tokenId={stakedToken.toNumber()}
                   key={stakedToken.toString()}
                 />
+              
               ))}
+                  
           </div>
+    
     </div>
+     
   );
 };
 
