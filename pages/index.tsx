@@ -134,6 +134,7 @@ function isListEmpty() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.topdiv}></div>
       <h1 className={styles.h1}>DOSAMIGOS STAKING</h1>
       <hr className={`${styles.divider} ${styles.spacerTop}`} />
       {!address ? (
